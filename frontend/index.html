@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Customer Support Agent</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- =========================
+             SIDEBAR
+             ========================= -->
+
+        <aside class="sidebar">
+
+            <div class="logo-section">
+
+                <div class="logo">
+                    AI
+                </div>
+
+                <div>
+                    <h2>Support Agent</h2>
+                    <span>AI Customer Support</span>
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-content">
+
+                <button
+                    type="button"
+                    class="new-chat-btn"
+                    onclick="newChat()"
+                >
+                    <span>＋</span>
+                    New Conversation
+                </button>
+
+
+                <div class="capabilities">
+
+                    <h3>Capabilities</h3>
+
+
+                    <div class="capability">
+
+                        <div class="capability-icon">
+                            📚
+                        </div>
+
+                        <div>
+                            <strong>Knowledge Base</strong>
+                            <p>Policies & FAQs</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="capability">
+
+                        <div class="capability-icon">
+                            📦
+                        </div>
+
+                        <div>
+                            <strong>Order Tracking</strong>
+                            <p>Order status & delivery</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="capability">
+
+                        <div class="capability-icon">
+                            💳
+                        </div>
+
+                        <div>
+                            <strong>Payments</strong>
+                            <p>Payment information</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="capability">
+
+                        <div class="capability-icon">
+                            🎫
+                        </div>
+
+                        <div>
+                            <strong>Support Tickets</strong>
+                            <p>Ticket information</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-footer">
+
+                <div class="status-dot"></div>
+
+                <span>
+                    AI Agent Online
+                </span>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+             ========================= -->
+
+        <main class="main-content">
+
+
+            <!-- HEADER -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>
+                        AI Customer Support
+                    </h1>
+
+                    <p>
+                        Ask questions about orders, payments, returns and policies.
+                    </p>
+
+                </div>
+
+
+                <div class="online-status">
+
+                    <span></span>
+
+                    Online
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 CHAT AREA
+                 ========================= -->
+
+            <section
+                class="chat-area"
+                id="chatArea"
+            >
+
+                <!-- Welcome Screen -->
+
+                <div
+                    class="welcome-section"
+                    id="welcomeSection"
+                >
+
+                    <div class="welcome-icon">
+                        ✦
+                    </div>
+
+
+                    <h2>
+                        How can I help you?
+                    </h2>
+
+
+                    <p>
+                        I can help you with orders, payments,
+                        support tickets and company policies.
+                    </p>
+
+
+                    <div class="suggestions">
+
+
+                        <!-- Order -->
+
+                        <button
+                            type="button"
+                            onclick="useSuggestion('What is the status of order ORD1001?')"
+                        >
+
+                            📦
+
+                            <span>
+
+                                <strong>
+                                    Check an order
+                                </strong>
+
+                                <small>
+                                    What is the status of ORD1001?
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <!-- Order Items -->
+
+                        <button
+                            type="button"
+                            onclick="useSuggestion('What products are in order ORD1001?')"
+                        >
+
+                            🛍️
+
+                            <span>
+
+                                <strong>
+                                    View order items
+                                </strong>
+
+                                <small>
+                                    What products are in ORD1001?
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <!-- Payment -->
+
+                        <button
+                            type="button"
+                            onclick="useSuggestion('How did I pay for order ORD1001?')"
+                        >
+
+                            💳
+
+                            <span>
+
+                                <strong>
+                                    Check payment
+                                </strong>
+
+                                <small>
+                                    How did I pay for ORD1001?
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <!-- Knowledge Base -->
+
+                        <button
+                            type="button"
+                            onclick="useSuggestion('Can I return a product after 40 days?')"
+                        >
+
+                            📚
+
+                            <span>
+
+                                <strong>
+                                    Ask about a policy
+                                </strong>
+
+                                <small>
+                                    Can I return a product after 40 days?
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 INPUT AREA
+                 ========================= -->
+
+            <section class="input-section">
+
+
+                <form
+                    id="questionForm"
+                    class="question-form"
+                >
+
+                    <div class="input-wrapper">
+
+
+                        <textarea
+                            id="question"
+                            name="question"
+                            rows="1"
+                            placeholder="Ask your customer support question..."
+                            autocomplete="off"
+                            required
+                        ></textarea>
+
+
+                        <button
+                            type="submit"
+                            class="send-button"
+                            id="sendButton"
+                            title="Send message"
+                        >
+
+                            <span>
+                                ➤
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+
+                    <div class="input-footer">
+
+                        <span>
+                            Press Enter to send • Shift + Enter for a new line
+                        </span>
+
+                        <span>
+                            AI responses may not always be perfect.
+                        </span>
+
+                    </div>
+
+
+                </form>
+
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> 
+    <script src="script.js"></script>
+
+</body>
+
+</html>
